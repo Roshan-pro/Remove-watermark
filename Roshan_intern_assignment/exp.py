@@ -14,7 +14,7 @@ def enhance_and_clean(img_path, output_path):
     # We give more weight to Green because it's usually the cleanest channel 
     # in diagrams with blue or red watermarks.
     b, g, r = cv2.split(img)
-    # gray = 0.05*B + 0.50*G + 0.45*R
+    # gray = 0.05*B + 0.45*G + 0.8*R
     gray = cv2.addWeighted(g, 0.45, r, 0.8, 0)
     gray = cv2.addWeighted(gray, 1.0, b, 0.05, 0)
 

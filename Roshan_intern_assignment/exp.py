@@ -55,7 +55,10 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
 
     extensions = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
-    files = [f for f in input_dir.iterdir() if f.suffix.lower() in extensions]
+    if input_dir.is_dir():
+        files = [f for f in input_dir.iterdir() if f.suffix.lower() in extensions]
+    elif input_dir.is_file():
+        files = [input_dir]
 
     print(f"Processing {len(files)} images...")
     for f in files:
